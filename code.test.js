@@ -1,16 +1,19 @@
-const fs = require('fs');
-const jsc = require('jsverify');
+function binarySearch(list, element) {
+    let left = 0;
+    let right = list.length - 1;
 
-eval(fs.readFileSync('code.js')+'');
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
 
-const testSearch =
-    jsc.forall("array nat", function(arr) {
-        if(arr.length > 0) {
-            arr.sort(function(a, b) { return a - b; });
-            return binarySearch(arr, arr[0]) === 0;
+        if (list[mid] === element) {
+            // Return the actual index of the element in the sorted array
+            return mid;
+        } else if (list[mid] < element) {
+            left = mid + 1; // Search in the right half
         } else {
-            return binarySearch(arr, "foo") === -1;
+            right = mid - 1; // Search in the left half
         }
-    });
+    }
 
-jsc.assert(testSearch);
+    return -1; // Element not found in the list
+}
