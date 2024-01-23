@@ -6,7 +6,8 @@ function binarySearch(list, element) {
         const mid = Math.floor((left + right) / 2);
 
         if (list[mid] === element) {
-            return mid; // Element found, return its index
+            // Return the actual index of the element in the sorted array
+            return mid;
         } else if (list[mid] < element) {
             left = mid + 1; // Search in the right half
         } else {
