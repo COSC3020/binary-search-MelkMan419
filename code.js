@@ -7,13 +7,14 @@ function binarySearch(list, element) {
 
         if (list[mid] === element) {
             return mid; // Element found, return its index
-        } else if (list[mid] < element) {
+        }
+        else if (list[mid] < element) {
             left = mid + 1; // Search in the right half
-        } else {
+        }
+        else {
             right = mid - 1; // Search in the left half
         }
     }
-
     // Element not found in the list, return the index where it should be inserted
     return -1;
 }
