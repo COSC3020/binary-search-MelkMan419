@@ -19,5 +19,5 @@ function binarySearch(list, element) {
     }
 
     // Element not found in the list, return the index where it should be inserted
-    return -1;
+    return left;
 }
