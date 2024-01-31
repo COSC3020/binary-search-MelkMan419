@@ -1,17 +1,23 @@
-function binarySearch(arr, target) {
-  let start = 0
-  let end = arr.length - 1
-  while (start <= end) {
-    let middle = Math.floor((start + end) / 2)
-    if (arr[middle] < target) { // Search the right half
-      start = middle + 1
+function binarySearch(list, element) {
+    let left = 0;
+    let right = list.length - 1;
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        if (list[mid] < element) {
+            left = mid + 1; // right
+        } 
+        else {
+            right = mid - 1; //left
+        }
     }
-    else if (arr[middle] > target) { // Search the left half
-      end = middle - 1
-    } 
-    else if (arr[middle] === target) { // Found target
-      return middle
+    if (left < list.length && list[left] === element) {
+        // Adjust the index 
+        while (left > 0 && list[left - 1] === element) {
+            left--;
+        }
+        return left;
     }
-  } // Target not found
-  return -1
+
+    //not found
+    return -1;
 }
